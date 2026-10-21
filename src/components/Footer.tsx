@@ -90,11 +90,6 @@ export default function Footer() {
           </h3>
           <ul className="mt-4 space-y-2">
             <li>
-              <Link to="/sertifikat" className="text-sm transition-colors hover:text-white">
-                Sertifikat
-              </Link>
-            </li>
-            <li>
               <Link to="/daftar" className="text-sm transition-colors hover:text-white">
                 Daftar
               </Link>

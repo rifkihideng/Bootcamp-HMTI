@@ -8,7 +8,6 @@ import type { CinematicConfig } from './components/CinematicLayers'
 import HomePage from './pages/HomePage'
 
 const RegisterPage = lazy(() => import('./pages/RegisterPage'))
-const CertificatePage = lazy(() => import('./pages/CertificatePage'))
 const PengumumanPage = lazy(() => import('./pages/PengumumanPage'))
 const CekStatusPage = lazy(() => import('./pages/CekStatusPage'))
 const GaleriPage = lazy(() => import('./pages/GaleriPage'))
@@ -146,7 +145,6 @@ export default function App() {
           <Routes>
             <Route path="/" element={<HomePageRoute />} />
             <Route path="/daftar" element={<RegisterPage />} />
-            <Route path="/sertifikat" element={<CertificatePage />} />
             <Route path="/pengumuman" element={<PengumumanPage />} />
             <Route path="/cek-status" element={<CekStatusPage />} />
             <Route path="/galeri" element={<GaleriPage />} />
