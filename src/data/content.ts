@@ -341,3 +341,25 @@ export const gallery: GalleryItem[] = [
     image: 'https://picsum.photos/seed/hmti-networking/800/450',
   },
 ]
+
+export interface MerchandiseItem {
+  title: string
+  description: string
+  gradient: string
+  icon: 'keychain' | 'sticker'
+}
+
+export const merchandise: MerchandiseItem[] = [
+  {
+    title: 'Keychain HMTI',
+    description: 'Gantungan kunci khas HMTI Bootcamp 2026 untuk menemani keseharianmu.',
+    gradient: 'from-accent-500 to-navy-700',
+    icon: 'keychain',
+  },
+  {
+    title: 'Sticker Pack',
+    description: 'Koleksi stiker eksklusif dengan desain ikonik HMTI Bootcamp 2026.',
+    gradient: 'from-navy-700 to-accent-600',
+    icon: 'sticker',
+  },
+]

@@ -114,6 +114,11 @@ export default function Footer() {
                 Galeri
               </Link>
             </li>
+            <li>
+              <Link to="/merchandise" className="text-sm transition-colors hover:text-white">
+                Merchandise
+              </Link>
+            </li>
           </ul>
         </div>
 

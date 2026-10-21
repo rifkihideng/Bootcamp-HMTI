@@ -12,6 +12,7 @@ const CertificatePage = lazy(() => import('./pages/CertificatePage'))
 const PengumumanPage = lazy(() => import('./pages/PengumumanPage'))
 const CekStatusPage = lazy(() => import('./pages/CekStatusPage'))
 const GaleriPage = lazy(() => import('./pages/GaleriPage'))
+const MerchandisePage = lazy(() => import('./pages/MerchandisePage'))
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'))
 
 function PageLoader() {
@@ -149,6 +150,7 @@ export default function App() {
             <Route path="/pengumuman" element={<PengumumanPage />} />
             <Route path="/cek-status" element={<CekStatusPage />} />
             <Route path="/galeri" element={<GaleriPage />} />
+            <Route path="/merchandise" element={<MerchandisePage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Suspense>
