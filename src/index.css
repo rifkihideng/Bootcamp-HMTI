@@ -236,26 +236,3 @@ body {
   filter: blur(0);
   transform: translateY(0);
 }
-
-@media print {
-  @page {
-    size: A4 landscape;
-    margin: 0;
-  }
-
-  body * {
-    visibility: hidden;
-  }
-
-  #certificate,
-  #certificate * {
-    visibility: visible;
-  }
-
-  #certificate {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: auto;
-  }
-}
