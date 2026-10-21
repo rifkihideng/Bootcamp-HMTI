@@ -22,11 +22,11 @@ export default function Mentors() {
           />
         </Reveal>
 
-        <Reveal className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4" delay={0.1}>
+        <Reveal className="mt-12 grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-4" delay={0.1}>
           {mentors.map((mentor) => (
             <div
               key={mentor.name}
-              className="rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-sm transition-shadow hover:shadow-md"
+              className="rounded-2xl border border-slate-200 bg-white p-4 text-center shadow-sm transition-shadow hover:shadow-md sm:p-6"
             >
               <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-navy-900 text-2xl font-bold text-accent-400">
                 {getInitials(mentor.name)}

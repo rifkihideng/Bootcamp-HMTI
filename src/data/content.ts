@@ -33,7 +33,7 @@ export const about = {
 }
 
 export interface Division {
-  icon: 'code' | 'server' | 'palette' | 'brain'
+  icon: 'code' | 'server' | 'palette' | 'brain' | 'cpu'
   title: string
   description: string
   skills: string[]
@@ -65,6 +65,13 @@ export const divisions: Division[] = [
     description:
       'Analisis data dengan Python, machine learning dasar, hingga pemanfaatan AI untuk produktivitas coding.',
     skills: ['Data Science', 'Machine Learning', 'Prompt Engineering', 'SQL & Visualisasi'],
+  },
+  {
+    icon: 'cpu',
+    title: 'IoT',
+    description:
+      'Menghubungkan perangkat fisik ke internet menggunakan mikrokontroler, sensor, dan platform cloud.',
+    skills: ['Arduino', 'ESP32', 'Raspberry Pi', 'MQTT', 'Sensor & Aktuator'],
   },
 ]
 
