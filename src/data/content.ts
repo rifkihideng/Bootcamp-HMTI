@@ -7,6 +7,8 @@ export const org = {
     'Program pelatihan intensif dari HMTI untuk mahasiswa yang ingin menguasai keterampilan praktis dan siap bersaing di dunia kerja.',
 }
 
+export const registrationDeadline = '2026-11-20T23:59:59+07:00'
+
 export interface NavLink {
   label: string
   href: string
@@ -36,7 +38,11 @@ export interface Division {
   icon: 'code' | 'server' | 'palette' | 'brain' | 'cpu'
   title: string
   description: string
+  project: string
   skills: string[]
+  stack: string[]
+  quota: number
+  filled: number
 }
 
 export const divisions: Division[] = [
@@ -44,34 +50,54 @@ export const divisions: Division[] = [
     icon: 'code',
     title: 'Frontend',
     description: 'Membangun antarmuka web yang interaktif, responsif, dan nyaman digunakan.',
+    project: 'Landing page portofolio interaktif dengan React & Tailwind CSS.',
     skills: ['React', 'Vue', 'Next.js', 'Tailwind CSS', 'Git & GitHub'],
+    stack: ['react', 'nextdotjs', 'tailwindcss', 'vite'],
+    quota: 20,
+    filled: 12,
   },
   {
     icon: 'server',
     title: 'Backend',
     description:
       'Mengelola server, database, dan API. Elysia dan Bun juga mulai muncul di kampus yang mengikuti tren.',
+    project: 'REST API manajemen data bootcamp dengan Node.js & database.',
     skills: ['Node.js (Express)', 'Laravel (PHP)', 'Golang', 'Python (Django/FastAPI)', 'Git & GitHub'],
+    stack: ['nodedotjs', 'laravel', 'go', 'python'],
+    quota: 20,
+    filled: 10,
   },
   {
     icon: 'palette',
     title: 'UI/UX Design',
     description: 'Merancang antarmuka dan pengalaman pengguna yang intuitif serta menarik.',
+    project: 'Redesign aplikasi mobile HMTI dari riset hingga prototype interaktif di Figma.',
     skills: ['Figma', 'Wireframe', 'Prototyping', 'Design System'],
+    stack: ['figma', 'framer'],
+    quota: 15,
+    filled: 7,
   },
   {
     icon: 'brain',
     title: 'Data & AI',
     description:
       'Analisis data dengan Python, machine learning dasar, hingga pemanfaatan AI untuk produktivitas coding.',
+    project: 'Dashboard analisis data peserta bootcamp + chatbot AI sederhana.',
     skills: ['Data Science', 'Machine Learning', 'Prompt Engineering', 'SQL & Visualisasi'],
+    stack: ['python', 'tensorflow', 'pandas'],
+    quota: 20,
+    filled: 14,
   },
   {
     icon: 'cpu',
     title: 'IoT',
     description:
       'Menghubungkan perangkat fisik ke internet menggunakan mikrokontroler, sensor, dan platform cloud.',
+    project: 'Sistem monitoring suhu & kelembapan ruangan berbasis ESP32.',
     skills: ['Arduino', 'ESP32', 'Raspberry Pi', 'MQTT', 'Sensor & Aktuator'],
+    stack: ['arduino', 'espressif', 'raspberrypi'],
+    quota: 15,
+    filled: 9,
   },
 ]
 
@@ -252,21 +278,29 @@ export const contact = {
 export interface Announcement {
   title: string
   date: string
+  isoDate: string
   category: string
   content: string
+  link?: {
+    label: string
+    to: string
+  }
 }
 
 export const announcements: Announcement[] = [
   {
     title: 'Pendaftaran Resmi Dibuka',
     date: '1 November 2026',
+    isoDate: '2026-11-01',
     category: 'Pendaftaran',
     content:
       'Pendaftaran Bootcamp Himpunan Teknologi Informasi 2026 resmi dibuka. Segera daftar dan pilih peminatan favoritmu sebelum kuota terpenuhi.',
+    link: { label: 'Daftar Sekarang', to: '/daftar' },
   },
   {
     title: 'Seleksi Wawancara Dimulai',
     date: '21 November 2026',
+    isoDate: '2026-11-21',
     category: 'Seleksi',
     content:
       'Bagi pendaftar yang lolos seleksi administrasi, jadwal wawancara akan dikirim melalui WhatsApp. Pastikan nomor yang didaftarkan aktif.',
@@ -274,13 +308,16 @@ export const announcements: Announcement[] = [
   {
     title: 'Pengumuman Peserta Lolos',
     date: '26 November 2026',
+    isoDate: '2026-11-26',
     category: 'Pengumuman',
     content:
       'Pengumuman peserta yang lolos seleksi dapat dilihat di halaman Cek Status dengan memasukkan NIM, serta melalui media sosial resmi HMTI.',
+    link: { label: 'Cek Status', to: '/cek-status' },
   },
   {
     title: 'Technical Meeting & Kick-off',
     date: '1 Desember 2026',
+    isoDate: '2026-12-01',
     category: 'Kegiatan',
     content:
       'Technical meeting dan kick-off bootcamp akan dilaksanakan di kampus. Peserta wajib hadir untuk mendapat arahan awal dan pembagian kelompok.',

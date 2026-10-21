@@ -4,6 +4,8 @@ import {
   registrationRecords,
   type RegistrationRecord,
 } from '../data/content'
+import Reveal from '../components/Reveal'
+import SectionHeading from '../components/SectionHeading'
 
 const inputClass =
   'w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-navy-900 placeholder-slate-400 focus:border-accent-500 focus:outline-none focus:ring-2 focus:ring-accent-500/30'
@@ -53,17 +55,14 @@ export default function CekStatusPage() {
   return (
     <section id="cek-status" className="bg-gradient-to-b from-white to-navy-50 pt-28 pb-20 sm:pt-32 sm:pb-24">
       <div className="mx-auto max-w-2xl px-4 sm:px-6">
-        <div className="text-center">
-          <span className="inline-block rounded-full bg-accent-100 px-3 py-1 text-sm font-semibold text-accent-600">
-            Cek Status
-          </span>
-          <h1 className="mt-4 text-3xl font-bold text-navy-900 sm:text-4xl">
-            Cek Status Pendaftaran
-          </h1>
-          <p className="mt-4 text-slate-600">
-            Masukkan NIM yang kamu gunakan saat mendaftar untuk melihat hasil seleksi.
-          </p>
-        </div>
+        <Reveal>
+          <SectionHeading
+            as="h1"
+            eyebrow="Cek Status"
+            title="Cek Status Pendaftaran"
+            description="Masukkan NIM yang kamu gunakan saat mendaftar untuk melihat hasil seleksi."
+          />
+        </Reveal>
 
         <form
           onSubmit={handleSubmit}

@@ -40,7 +40,7 @@ export const pillLoadingConfig = {
   /** Kelas glow/shadow pada pill. */
   glowClass: 'shadow-[0_8px_40px_rgba(37,150,190,0.25)]',
   /** Durasi sebelum otomatis lanjut ke tahap berikutnya (ms). */
-  durationMs: 900,
+  durationMs: 2200,
   /** Izinkan klik untuk melewati layar loading. */
   skipOnClick: true,
 }
