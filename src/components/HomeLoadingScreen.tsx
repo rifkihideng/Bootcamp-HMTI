@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import CinematicLayers, { type CinematicConfig } from './CinematicLayers'
 
 export interface HomeLoadingScreenProps {
@@ -88,15 +88,21 @@ export default function HomeLoadingScreen({
         )}
 
         <h1 className="min-h-16 max-w-3xl text-balance text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
-          {Array.from(displayed).map((char, index) =>
-            char === ' ' ? (
-              <span key={index}> </span>
-            ) : (
-              <span key={index} className="inline-block animate-[char-in_0.35s_ease-out_both]">
-                {char}
+          {displayed.split(' ').map((word, wordIndex) => (
+            <Fragment key={wordIndex}>
+              {wordIndex > 0 && <span> </span>}
+              <span className="inline-block whitespace-nowrap">
+                {Array.from(word).map((char, charIndex) => (
+                  <span
+                    key={charIndex}
+                    className="inline-block animate-[char-in_0.35s_ease-out_both]"
+                  >
+                    {char}
+                  </span>
+                ))}
               </span>
-            ),
-          )}
+            </Fragment>
+          ))}
           <span
             className="ml-1 inline-block h-8 w-1 animate-[caret-blink_0.8s_step-end_infinite] rounded bg-accent-400 align-middle sm:h-10"
             aria-hidden="true"

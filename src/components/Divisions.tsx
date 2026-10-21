@@ -1,4 +1,4 @@
-import { Brain, Code2, Palette, Server, type LucideIcon } from 'lucide-react'
+import { Brain, Code2, Cpu, Palette, Server, type LucideIcon } from 'lucide-react'
 import { divisions } from '../data/content'
 import SectionHeading from './SectionHeading'
 import Reveal from './Reveal'
@@ -8,6 +8,7 @@ const iconMap: Record<string, LucideIcon> = {
   server: Server,
   palette: Palette,
   brain: Brain,
+  cpu: Cpu,
 }
 
 export default function Divisions() {
@@ -22,13 +23,14 @@ export default function Divisions() {
           />
         </Reveal>
 
-        <Reveal className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4" delay={0.1}>
-          {divisions.map((division) => {
+        <div className="mt-12 flex flex-wrap justify-center gap-6">
+          {divisions.map((division, index) => {
             const Icon = iconMap[division.icon]
             return (
-              <div
+              <Reveal
                 key={division.title}
-                className="flex flex-col rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md"
+                delay={index * 0.08}
+                className="flex w-full max-w-sm flex-col rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.125rem)]"
               >
                 <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-navy-900 text-accent-400">
                   <Icon className="h-6 w-6" />
@@ -45,10 +47,10 @@ export default function Divisions() {
                     </li>
                   ))}
                 </ul>
-              </div>
+              </Reveal>
             )
           })}
-        </Reveal>
+        </div>
       </div>
     </section>
   )
