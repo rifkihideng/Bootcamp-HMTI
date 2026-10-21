@@ -91,19 +91,10 @@ export const cinematicConfig: CinematicConfig = {
   vignetteStrength: 0.5,
 }
 
-const LOADING_STORAGE_KEY = 'bootcamp-loading-shown'
-
 function HomePageRoute() {
-  const [phase, setPhase] = useState<'pill' | 'typewriter' | 'done'>(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return 'done'
-    return sessionStorage.getItem(LOADING_STORAGE_KEY) ? 'done' : 'pill'
-  })
-
-  useEffect(() => {
-    if (phase === 'pill') {
-      sessionStorage.setItem(LOADING_STORAGE_KEY, '1')
-    }
-  }, [phase])
+  const [phase, setPhase] = useState<'pill' | 'typewriter' | 'done'>(() =>
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'done' : 'pill',
+  )
 
   return (
     <>
