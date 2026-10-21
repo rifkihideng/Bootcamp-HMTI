@@ -1,4 +1,13 @@
-import { Brain, Code2, Cpu, Palette, Server, type LucideIcon } from 'lucide-react'
+import {
+  Brain,
+  Code2,
+  Cpu,
+  Palette,
+  Rocket,
+  Server,
+  Users,
+  type LucideIcon,
+} from 'lucide-react'
 import { divisions } from '../data/content'
 import SectionHeading from './SectionHeading'
 import Reveal from './Reveal'
@@ -26,6 +35,9 @@ export default function Divisions() {
         <div className="mt-12 flex flex-wrap justify-center gap-6">
           {divisions.map((division, index) => {
             const Icon = iconMap[division.icon]
+            const remaining = division.quota - division.filled
+            const filledPercent = Math.round((division.filled / division.quota) * 100)
+
             return (
               <Reveal
                 key={division.title}
@@ -36,8 +48,35 @@ export default function Divisions() {
                   <Icon className="h-6 w-6" />
                 </span>
                 <h3 className="mt-5 text-lg font-bold text-navy-900">{division.title}</h3>
-                <p className="mt-2 flex-1 text-sm text-slate-600">{division.description}</p>
-                <ul className="mt-4 flex flex-wrap gap-2">
+                <p className="mt-2 text-sm text-slate-600">{division.description}</p>
+
+                <div className="mt-3 rounded-lg bg-accent-50 p-3">
+                  <p className="flex items-start gap-2 text-xs leading-relaxed text-navy-700">
+                    <Rocket className="mt-0.5 h-4 w-4 shrink-0 text-accent-600" />
+                    <span>
+                      <span className="font-semibold text-accent-700">Proyek:</span>{' '}
+                      {division.project}
+                    </span>
+                  </p>
+                </div>
+
+                <div className="mt-4">
+                  <div className="flex items-center justify-between text-xs">
+                    <span className="flex items-center gap-1 font-medium text-navy-700">
+                      <Users className="h-3.5 w-3.5" />
+                      Kuota
+                    </span>
+                    <span className="font-semibold text-accent-600">Sisa {remaining}</span>
+                  </div>
+                  <div className="mt-1.5 h-2 w-full overflow-hidden rounded-full bg-slate-100">
+                    <div
+                      className="h-full rounded-full bg-accent-500"
+                      style={{ width: `${filledPercent}%` }}
+                    />
+                  </div>
+                </div>
+
+                <ul className="mt-4 flex flex-wrap gap-2 border-t border-slate-100 pt-4">
                   {division.skills.map((skill) => (
                     <li
                       key={skill}

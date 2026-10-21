@@ -1,7 +1,25 @@
 import { useEffect, useState } from 'react'
 import { ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import { org } from '../data/content'
+import { org, registrationDeadline } from '../data/content'
+
+interface TimeLeft {
+  days: number
+  hours: number
+  minutes: number
+  seconds: number
+}
+
+function calcTimeLeft(target: string): TimeLeft {
+  const diff = new Date(target).getTime() - Date.now()
+  if (diff <= 0) return { days: 0, hours: 0, minutes: 0, seconds: 0 }
+  return {
+    days: Math.floor(diff / 86_400_000),
+    hours: Math.floor(diff / 3_600_000) % 24,
+    minutes: Math.floor(diff / 60_000) % 60,
+    seconds: Math.floor(diff / 1_000) % 60,
+  }
+}
 
 function useTypewriter(text: string, typingSpeed = 70, deletingSpeed = 35, holdTime = 2000) {
   const [displayed, setDisplayed] = useState('')
@@ -35,6 +53,19 @@ function useTypewriter(text: string, typingSpeed = 70, deletingSpeed = 35, holdT
 
 export default function Hero() {
   const typed = useTypewriter(org.fullName)
+  const [timeLeft, setTimeLeft] = useState<TimeLeft>(() => calcTimeLeft(registrationDeadline))
+
+  useEffect(() => {
+    const id = setInterval(() => setTimeLeft(calcTimeLeft(registrationDeadline)), 1000)
+    return () => clearInterval(id)
+  }, [])
+
+  const countdownUnits = [
+    { label: 'Hari', value: timeLeft.days },
+    { label: 'Jam', value: timeLeft.hours },
+    { label: 'Menit', value: timeLeft.minutes },
+    { label: 'Detik', value: timeLeft.seconds },
+  ]
 
   return (
     <section
@@ -59,7 +90,28 @@ export default function Hero() {
           {org.tagline}
         </p>
 
-        <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+        <div className="mt-8">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
+            Pendaftaran ditutup dalam
+          </p>
+          <div className="mt-3 flex items-center justify-center gap-3">
+            {countdownUnits.map((unit) => (
+              <div
+                key={unit.label}
+                className="flex min-w-[4.25rem] flex-col items-center rounded-xl border border-white/10 bg-white/5 px-3 py-2.5 backdrop-blur-sm"
+              >
+                <span className="text-2xl font-bold tabular-nums text-white">
+                  {String(unit.value).padStart(2, '0')}
+                </span>
+                <span className="mt-0.5 text-[11px] font-medium uppercase tracking-wider text-slate-400">
+                  {unit.label}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
           <Link
             to="/daftar"
             className="inline-flex items-center justify-center gap-2 rounded-lg bg-accent-500 px-6 py-3 font-semibold text-white transition-colors hover:bg-accent-600"

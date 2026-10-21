@@ -1,6 +1,7 @@
 import { KeyRound, Sticker, type LucideIcon } from 'lucide-react'
 import { merchandise, type MerchandiseItem } from '../data/content'
 import Reveal from '../components/Reveal'
+import SectionHeading from '../components/SectionHeading'
 
 const iconMap: Record<MerchandiseItem['icon'], LucideIcon> = {
   keychain: KeyRound,
@@ -34,17 +35,12 @@ export default function MerchandisePage() {
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <Reveal>
-          <div className="text-center">
-            <span className="inline-block rounded-full bg-accent-100 px-3 py-1 text-sm font-semibold text-accent-600">
-              Merchandise
-            </span>
-            <h1 className="mt-4 text-3xl font-bold text-navy-900 sm:text-4xl">
-              Merchandise HMTI Bootcamp
-            </h1>
-            <p className="mx-auto mt-4 max-w-2xl text-slate-600">
-              Koleksi merchandise resmi Bootcamp Himpunan Teknologi Informasi 2026.
-            </p>
-          </div>
+          <SectionHeading
+            as="h1"
+            eyebrow="Merchandise"
+            title="Merchandise HMTI Bootcamp"
+            description="Koleksi merchandise resmi Bootcamp Himpunan Teknologi Informasi 2026."
+          />
         </Reveal>
 
         <div className="mt-12 flex flex-wrap justify-center gap-6">
